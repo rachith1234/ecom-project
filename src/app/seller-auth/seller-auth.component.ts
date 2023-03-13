@@ -10,9 +10,10 @@ export class SellerAuthComponent implements OnInit {
   constructor(private sell:SellService) {}
 
     ngOnInit(): void {}
-    signUp(data:Object):void{
-      console.warn(data)
-      this.sell.userSignUp();
+    signUp(data:object):void{
+        this.sell.userSignUp(data).subscribe((result)=>{
+        console.warn(result)
+      });
     }
   
   onSubmit(data:object):void{
