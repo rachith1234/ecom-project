@@ -4,6 +4,12 @@
       "id": 1,
       "title": "json-server",
       "author": "typicode"
+    },
+    {
+      "name": "adf",
+      "password": "sdf",
+      "email": "sdf",
+      "id": 2
     }
   ],
   "comments": [

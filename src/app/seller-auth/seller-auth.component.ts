@@ -12,7 +12,7 @@ export class SellerAuthComponent implements OnInit {
     ngOnInit(): void {}
     signUp(data:object):void{
         this.sell.userSignUp(data).subscribe((result)=>{
-        console.warn(result)
+        console.warn(result);
       });
     }
   
