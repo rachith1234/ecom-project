@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { SignUp } from '../data-type';
-
+import { BehaviorSubject } from 'rxjs';
+import {Router} from '@angular/router'
 
 
 @Injectable({
@@ -9,9 +10,18 @@ import { SignUp } from '../data-type';
 })
 export class SellService {
 
-  constructor(private http:HttpClient) { }
+  isSellerLoggedIn = new BehaviorSubject<boolean>(false)
 
-  userSignUp(data:SignUp){
-   return this.http.post('http://localhost:3000/posts/' ,data)
+  constructor(private http: HttpClient, private router:Router) { }
+
+  userSignUp(data: SignUp) {
+    let result = this.http.post('http://localhost:3000/posts/', data, { observe: 'response' }).subscribe((result) => {
+      this.isSellerLoggedIn.next(true);
+      localStorage.setItem('seller',JSON.stringify(result.body));
+      this.router.navigate(['seller-home']);
+      console.warn("result", result);
+    })
+
+    return false
   }
 }
