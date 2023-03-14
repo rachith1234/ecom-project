@@ -6,6 +6,20 @@
             <input class="form-input" type="password" ngModel name="password" placeholder="Enter password">
             <input class="form-input" type="text" ngModel name="email" placeholder="Enter Email">
             <button class="form-button" >SignUp</button>
+            <a >Already have an Account? Click Here</a>
         </form>
     </div>
+
+<!-- Login Area -->
+
+<div class="sign-up">
+    <h1>Seller Login</h1>
+    <form #sellerSignUp="ngForm" (ngSubmit)="signUp(sellerSignUp.value)" class="common-form">
+        <input class="form-input" type="text" ngModel name="email" placeholder="Enter Email">
+        <input class="form-input" type="password" ngModel name="password" placeholder="Enter password">
+        <button class="form-button" >Login</button>
+    </form>
+</div>
+
+
 </div>
