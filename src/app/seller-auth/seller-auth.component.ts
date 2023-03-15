@@ -9,9 +9,12 @@ import { login, SignUp } from '../data-type';
   styleUrls: ['./seller-auth.component.css']
 })
 export class SellerAuthComponent implements OnInit {
-  constructor(private sell: SellService, private router: Router) { }
+  constructor(private sell: SellService, private router: Router) { 
+    this.authError = '';
+  }
 
   showLogin = false;
+  authError:string='';
   SignUp: SignUp ={ name: '', email: '', password: '' };
   login: login = { email: '', password: '' };
 
@@ -24,7 +27,12 @@ export class SellerAuthComponent implements OnInit {
 
   Login(data: login): void {
     //console.warn(data);
-    this.sell.userLogin(data)
+    this.sell.userLogin(data);
+    this.sell.isLoginError.subscribe((isError)=>{
+      if(isError){
+          this.authError="Email or password is not correct";
+      }
+    })
 
   }
 
