@@ -12,12 +12,13 @@ export class SellerAuthComponent implements OnInit {
   constructor(private sell: SellService, private router: Router) { }
 
   showLogin = false;
+  SignUp: SignUp ={ name: '', email: '', password: '' };
   login: login = { email: '', password: '' };
 
   ngOnInit(): void { }
 
   signUp(data: SignUp): void {
-    console.warn(data);
+    //console.warn(data);
     this.sell.userSignUp(data)
   }
 
